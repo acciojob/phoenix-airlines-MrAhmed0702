@@ -1,16 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App'; // Import the main App component
-import './index.css'; // Optional: Import your CSS styles
-import reportWebVitals from './reportWebVitals'; // Optional: For measuring performance
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import App from "./components/App";
+import store from "./store";
 
-// Render the App component into the root element
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById("root")
 );
-
-// Optional: For measuring performance
-reportWebVitals();
