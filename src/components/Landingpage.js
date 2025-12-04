@@ -1,20 +1,13 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Landingpage() {
-  let navigate = useNavigate();
-
-  const nextpage = () => {
-    navigate("/flight-search");
-    console.log("hi");
-  }
-
+const LandingPage = () => {
   return (
-    <div>
-      <h1>Welcome To Flight Booking App</h1>
-      <button onClick={nextpage}>Search Flights Here</button>
+    <div className="flight-booking">
+      <h1>Welcome to Phoenix Airlines</h1>
+      <Link to="/flight-search">Start Your Flight Search</Link>
     </div>
   );
 }
 
-export default Landingpage;
+export default LandingPage;

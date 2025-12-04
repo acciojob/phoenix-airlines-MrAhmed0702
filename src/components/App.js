@@ -1,24 +1,21 @@
-import React from "react";
-import './../styles/App.css';
-import Header from "./Header";
-import Landingpage from "./Landingpage";
-import Searchpage from "./Searchpage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Flightbooking from "./Flightbooking";
-import Bookingconfirmation from "./Bookingconfirmation";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LandingPage from './LandingPage';
+import FlightSearchPage from './FlightSearchPage';
+import FlightBookingPage from './FlightBookingPage';
+import ConfirmationPage from './ConfirmationPage';
+import '../styles/App.css';
 
 const App = () => {
   return (
     <Router>
       <div>
-        {/* Do not remove the main div */}
-        <Header/>
-        <Routes>
-          <Route path="/" element={<Landingpage />} />
-          <Route path="/flight-search" element={<Searchpage />} />
-          <Route path="/flight-booking" element={<Flightbooking />} />
-          <Route path="/confirmation" element={<Bookingconfirmation />} />
-        </Routes>
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/flight-search" component={FlightSearchPage} />
+          <Route path="/flight-booking" component={FlightBookingPage} />
+          <Route path="/confirmation" component={ConfirmationPage} />
+        </Switch>
       </div>
     </Router>
   );
