@@ -9,8 +9,8 @@ import { Grid, Typography, Button, TextField } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   filterContainer: {
-    marginBottom: 25
-  }
+    marginBottom: 25,
+  },
 }));
 
 const FlightBooking = () => {
@@ -50,7 +50,7 @@ const FlightBooking = () => {
    */
   const handleEmail = (e) => {
     const inputEmail = e.target.value;
-    const validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const validEmailRegex = /\S+@\S+\.\S+/;
 
     if (inputEmail.match(validEmailRegex) || inputEmail.length === 0) {
       setEmailValidator(false);
@@ -69,9 +69,12 @@ const FlightBooking = () => {
    */
   const handleMobile = (e) => {
     const inputMobile = e.target.value;
-    const validMobileRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+    const validMobileRegex = /^[0-9+\-() ]+$/;
 
-    if (inputMobile.match(validMobileRegex) || inputMobile.length === 0) {
+    if (
+      (inputMobile.match(validMobileRegex) && inputMobile.length >= 10) ||
+      inputMobile.length === 0
+    ) {
       setMobileValidator(false);
     } else {
       setMobileValidator(true);
@@ -156,7 +159,7 @@ const FlightBooking = () => {
 
 FlightBooking.propTypes = {
   classes: PropTypes.object,
-  history: PropTypes.object
+  history: PropTypes.object,
 };
 
 export default FlightBooking;
